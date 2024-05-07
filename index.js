@@ -1,7 +1,7 @@
 import { Manager } from "socket.io-client";
 
 const manager = new Manager("http://localhost:8777");
-const socket = manager.socket("/");
+const socket = manager.socket("/blokdots");
 
 let connected = false;
 let interval = null;
@@ -29,7 +29,7 @@ socket.on("blokdots", (data) => {
 
 socket.on("disconnect", () => {
 	console.log(`Disconnected from blokdots`);
-	if(interval) {
+	if (interval) {
 		clearInterval(interval);
 	}
 });
